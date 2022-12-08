@@ -1,2 +1,3 @@
 # KYFT
-A simple and user-friendly Client/Server file transfer program
+Kaz & Yee File Transfer
+A simple and user-friendly Client/Server online file transfer program
