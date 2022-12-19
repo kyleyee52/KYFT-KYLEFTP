@@ -1,4 +1,4 @@
-from ftplib import FTP
+from ftplib import FTP_TLS
 
 # Get FTP Server host address and port from user
 host = input("Enter FTP server host address: ")
@@ -9,7 +9,7 @@ if port == "":
 # Attempt to connect to the given FTP Server
 try:
     print("Attempting to connect to " + host + " with port " + str(port) + "...")
-    ftp = FTP()
+    ftp = FTP_TLS()
     ftp.connect(host, int(port))
     print("Successfully connected.")
 except:
