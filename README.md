@@ -2,7 +2,7 @@
 ### Kaz & Yee File Transfer
 A simple and user-friendly Client/Server online file transfer program.
 
-Use of pysftp: https://pysftp.readthedocs.io/en/release_0.2.9/
+Use of ftplib: https://docs.python.org/3/library/ftplib.html#ftp-objects
 
 To-Do List:
 - __GUI__
