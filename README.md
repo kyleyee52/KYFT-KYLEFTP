@@ -1,8 +1,8 @@
 # KYFT/KYLEFTP (NAME TBD)
 ### Kaz & Yee File Transfer
-A simple and user-friendly Client/Server online file transfer program.
+A simple and user-friendly FTP client.
 
-Use of ftplib: https://docs.python.org/3/library/ftplib.html#ftp-objects
+Use of pysftp: https://pysftp.readthedocs.io/en/release_0.2.9/
 
 To-Do List:
 - __GUI__
