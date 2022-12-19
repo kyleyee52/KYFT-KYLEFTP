@@ -1,4 +1,4 @@
-from ftplib import FTP_TLS
+from ftplib import FTP, all_errors
 
 # Get FTP Server host address and port from user
 host = input("Enter FTP server host address: ")
@@ -9,10 +9,11 @@ if port == "":
 # Attempt to connect to the given FTP Server
 try:
     print("Attempting to connect to " + host + " with port " + str(port) + "...")
-    ftp = FTP_TLS()
+    ftp = FTP()
     ftp.connect(host, int(port))
     print("Successfully connected.")
-except:
+except all_errors as e:
+    print(e)
     exit("Failed to connect to " + host)
 
 # Get login credentials from the user
@@ -24,7 +25,8 @@ try:
     print("Attempting login...")
     ftp.login(username, password)
     print("Successfully logged in.")
-except:
+except all_errors as e:
+    print(e)
     exit("Login failed. Invalid Username or Password.")
 
 # TODO MAIN LOOP
