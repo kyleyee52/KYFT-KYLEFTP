@@ -2,15 +2,12 @@ from ftplib import FTP, all_errors
 
 # Get FTP Server host address and port from user
 host = input("Enter FTP server host address: ")
-port = input("Enter port (default 21): ")
-if port == "":
-    port = 21
 
 # Attempt to connect to the given FTP Server
 try:
-    print("Attempting to connect to " + host + " with port " + str(port) + "...")
+    print("Attempting to connect to " + host + "...")
     ftp = FTP()
-    ftp.connect(host, int(port))
+    ftp.connect(host, 21)   # 21 is default ftp port
     print("Successfully connected.")
 except all_errors as e:
     print(e)
