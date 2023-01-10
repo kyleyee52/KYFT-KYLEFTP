@@ -2,7 +2,7 @@
 ### Kaz & Yee File Transfer
 A simple and user-friendly FTP client.
 
-Use of pysftp: https://pysftp.readthedocs.io/en/release_0.2.9/
+Use of the Python library, ftplib
 
 To-Do List:
 - __GUI__
