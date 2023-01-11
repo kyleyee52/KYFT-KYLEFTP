@@ -1,30 +1,28 @@
-from ftplib import FTP, all_errors
+from ftplib import FTP_TLS, all_errors
 
 
 # Connects to ftp server with given username and password
-def connect(host, user, passwd):
+def connect(host, user=None, passwd=None):
     try:
         # Connect to the FTP server
         print("Attempting to connect to " + host + "...")
-        ftp = FTP()
-        ftp.connect(host, 21)  # 21 is default ftp port
+        ftp = FTP_TLS(host)
         print("Successfully connected.")
 
         # Login to the FTP server
         print("Attempting login...")
-        ftp.login(user, passwd)
+        # Try logging in using given username and password
+        if user and passwd:
+            ftp.login(user, passwd)
+        # If username and password not given, attempt to login anonymously
+        else:
+            ftp.login()
         print("Successfully logged in.")
+
+        ftp.prot_p()
 
         # Return the FTP connection to pass around from function to function as needed
         return ftp
     except all_errors as e:
         print(e)
         exit("Failed to connect to " + host)
-
-
-# Returns all file names in current working directory of FTP
-# Return type: list of all filenames
-def getFiles(ftp): return ftp.nlst()
-
-# Disconnect from FTP. Must call connect() again to do anything with the FTP after this is called
-def disconnect(ftp): ftp.quit()
