@@ -75,6 +75,11 @@ def main():
         elif command[0] == 'delete':
             if len(command) == 2:
                 ftp.delete(command[1])
+        elif command[0] == 'download':
+            if len(command) == 2:
+                filename = command[1]
+                localfile = open(filename, 'wb')
+                ftp.retrbinary('RETR ' + filename, localfile.write, 1024)
             else:
                 print("Invalid number of arguments given for 'delete' command")
         elif command[0] == 'help':
