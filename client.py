@@ -27,7 +27,7 @@ def main():
                     ('help', 'prints list of all commands and their useages')]
     # Command loop:
     while 1:
-        command = input("Enter command. Type help for list of all commands").lower()
+        command = input("Enter command. Type help for list of all commands\n").lower()
         command = command.split(' ') 
         if command[0] == 'quit':
             break
