@@ -80,6 +80,7 @@ def main():
                 filename = command[1]
                 localfile = open(filename, 'wb')
                 ftp.retrbinary('RETR ' + filename, localfile.write, 1024)
+                localfile.close()
             else:
                 print("Invalid number of arguments given for 'delete' command")
         elif command[0] == 'help':
