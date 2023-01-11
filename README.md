@@ -2,7 +2,7 @@
 ### Kaz & Yee File Transfer
 A simple and user-friendly FTP client.
 
-Use of the Python library, ftplib
+Use of the FTP Python library, ftputil
 
 To-Do List:
 - __GUI__
