@@ -1,4 +1,4 @@
-from ftplib import FTP_TLS, all_errors
+from ftplib import FTP, all_errors
 
 
 # Connects to ftp server with given username and password
@@ -6,7 +6,7 @@ def connect(host, user=None, passwd=None):
     try:
         # Connect to the FTP server
         print("Attempting to connect to " + host + "...")
-        ftp = FTP_TLS(host)
+        ftp = FTP(host)
         print("Successfully connected.")
 
         # Login to the FTP server
@@ -18,8 +18,6 @@ def connect(host, user=None, passwd=None):
         else:
             ftp.login()
         print("Successfully logged in.")
-
-        ftp.prot_p()
 
         # Return the FTP connection to pass around from function to function as needed
         return ftp

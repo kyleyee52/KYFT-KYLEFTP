@@ -80,7 +80,7 @@ def main():
         elif command[0] == 'help':
             print(command_list)
         else:
-            print("Invalid command. Use 'help' for list of all commands.")
+            print("Invalid command.")
 
     # Disconnect from the FTP Server after main loop
     ftp.quit()
