@@ -137,15 +137,21 @@ def main():
                 subdirs = [x[0] for x in os.walk(arg[0])]
                 subdirs = ["/".join(os.path.relpath(dir, start=arg[0]).split("\\")) for dir in subdirs]
                 subdirs.remove(".")
+                # Change directory to given upload directory on server
+                pwd = ftp.getcwd()
+                ftp.chdir("/")
+                ftp.chdir(os.path.dirname(arg[1]))
                 # Create all necessary subdirectories on server
                 for dir in subdirs:
                     ftp.makedirs(ftp.path.join(os.path.basename(arg[0]), dir), exist_ok=True)
                 # Get files needed to upload from host machine
                 for root, localdirs, files in os.walk(arg[0]):
-                    # To do: Use dirs and dirpath to mkdir's. Then we can upload files
                     for file in files:
                         relpath = "/".join(os.path.relpath(os.path.join(root, file), start=arg[0]).split("\\"))
-                        ftp.upload(os.path.join(root, file), ftp.path.join(arg[1], relpath))
+                        ftp.upload(os.path.join(root, file), ftp.path.join(os.path.basename(arg[1]), relpath))
+                # After upload, chdir back to previous location
+                if os.path.dirname(arg[1]):
+                    ftp.chdir(pwd)
             else:
                 print("Could not find file/directory.")
         
